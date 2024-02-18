@@ -4,6 +4,7 @@ import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 
+from src.data import load_kaggle
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))
@@ -14,7 +15,8 @@ def main(input_filepath, output_filepath):
     """
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
-
+    load_kaggle.load_kaggle(input_filepath, dataset='march-machine-learning-mania-2023')
+    load_kaggle.unzip_kaggle(input_filepath / 'march-machine-learning-mania-2023.zip', input_filepath / 'mmlm23')
 
 if __name__ == '__main__':
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
