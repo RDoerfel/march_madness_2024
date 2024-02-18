@@ -6,15 +6,23 @@ from dotenv import find_dotenv, load_dotenv
 
 from src.data import load_kaggle
 
+def _make_path(path):
+    if isinstance(path, str):
+        return Path(path)
+    elif isinstance(path, Path):
+        return path
+    else:
+        raise ValueError
+        
 @click.command()
-@click.argument('input_filepath', type=click.Path(exists=True))
-@click.argument('output_filepath', type=click.Path())
-def main(input_filepath, output_filepath):
+@click.argument('input_filepath', type=click.Path(exists=True))   
+def main(input_filepath: Path):
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
+    input_filepath = _make_path(input_filepath)
     load_kaggle.load_kaggle(input_filepath, dataset='march-machine-learning-mania-2023')
     load_kaggle.unzip_kaggle(input_filepath / 'march-machine-learning-mania-2023.zip', input_filepath / 'mmlm23')
 
