@@ -8,7 +8,7 @@ PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 BUCKET = [OPTIONAL] your-bucket-for-syncing-data (do not include 's3://')
 PROFILE = default
 PROJECT_NAME = march_madness_2024
-PYTHON_INTERPRETER = python
+PYTHON_INTERPRETER = python3
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
@@ -27,6 +27,7 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
+	mkdir -p data/raw
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw
 
 ## Delete all compiled Python files
