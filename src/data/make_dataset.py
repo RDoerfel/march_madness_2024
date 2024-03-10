@@ -23,8 +23,8 @@ def main(input_filepath: Path):
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
     input_filepath = _make_path(input_filepath)
-    load_kaggle.load_kaggle(input_filepath, dataset='march-machine-learning-mania-2023')
-    load_kaggle.unzip_kaggle(input_filepath / 'march-machine-learning-mania-2023.zip', input_filepath / 'mmlm23')
+    load_kaggle.load_kaggle(input_filepath, dataset='march-machine-learning-mania-2024')
+    load_kaggle.unzip_kaggle(input_filepath / 'march-machine-learning-mania-2024.zip', input_filepath / 'mmlmm24')
 
 if __name__ == '__main__':
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
