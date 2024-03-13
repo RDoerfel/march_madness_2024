@@ -20,3 +20,5 @@ seaborn
 pandas
 xgboost
 kaggle
+lightgbm
+optuna
