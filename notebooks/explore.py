@@ -491,3 +491,5 @@ result_m.insert(0, 'Tournament', 'M')
 result_w = run_simulation(seeds_2024_w, slots_w, wins_w, n_brackets)
 result_w.insert(0, 'Tournament', 'W')
 
+
+# %%
